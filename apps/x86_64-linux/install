@@ -11,7 +11,7 @@ check_installer() {
 }
 
 cleanup() {
-  rm -rf nixos-config-main.zip nixos-config-main nixos-config
+  rm -rf nixos-config-original-main.zip nixos-config-original-main nixos-config
 }
 
 download_config() {
