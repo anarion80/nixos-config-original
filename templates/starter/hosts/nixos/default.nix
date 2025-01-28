@@ -17,7 +17,7 @@ let user = "%USER%";
       };
       efi.canTouchEfiVariables = true;
     };
-    initrd.availableKernelModules = [ "xhci_pci" "ahci" "nvme" "usbhid" "usb_storage" "sd_mod" ];
+    initrd.availableKernelModules = [ "xhci_pci" "ahci" "nvme" "usbhid" "usb_storage" "virtio_pci" "virtio_scsi" "sd_mod" ];
     # Uncomment for AMD GPU
     # initrd.kernelModules = [ "amdgpu" ];
     kernelPackages = pkgs.linuxPackages_latest;
@@ -25,7 +25,7 @@ let user = "%USER%";
   };
 
   # Set your time zone.
-  time.timeZone = "America/New_York";
+  time.timeZone = "Europe/Warsaw";
 
   # The global useDHCP flag is deprecated, therefore explicitly set to false here.
   # Per-interface useDHCP will be mandatory in the future, so this generated config
@@ -223,16 +223,16 @@ let user = "%USER%";
     tumbler.enable = true; # Thumbnail support for images
 
     # Emacs runs as a daemon
-    emacs = {
-      enable = true;
-      package = pkgs.emacs-unstable;
-    };
+    # emacs = {
+    #  enable = true;
+    #  package = pkgs.emacs-unstable;
+    # };
   };
 
   # When emacs builds from no cache, it exceeds the 90s timeout default
-  systemd.user.services.emacs = {
-    serviceConfig.TimeoutStartSec = "7min";
-  };
+  #systemd.user.services.emacs = {
+  #  serviceConfig.TimeoutStartSec = "7min";
+  #};
 
   # Enable sound
   # sound.enable = true;
@@ -292,7 +292,7 @@ let user = "%USER%";
 
   fonts.packages = with pkgs; [
     dejavu_fonts
-    emacs-all-the-icons-fonts
+    # emacs-all-the-icons-fonts
     feather-font # from overlay
     jetbrains-mono
     font-awesome
