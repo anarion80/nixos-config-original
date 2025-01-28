@@ -17,7 +17,7 @@ let user = "%USER%";
       };
       efi.canTouchEfiVariables = true;
     };
-    initrd.availableKernelModules = [ "xhci_pci" "vmw_pvsci" "ahci" "nvme" "usbhid" "usb_storage" "virtio_pci" "virtio_scsi" "sd_mod" "ext4" "scsi_mod" ];
+    initrd.availableKernelModules = [ "xhci_pci" "ahci" "nvme" "usbhid" "usb_storage" "virtio_pci" "virtio_scsi" "sd_mod" "ext4" "scsi_mod" ];
     # Uncomment for AMD GPU
     # initrd.kernelModules = [ "amdgpu" ];
     kernelPackages = pkgs.linuxPackages_latest;
